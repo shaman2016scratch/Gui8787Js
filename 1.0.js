@@ -12,7 +12,10 @@ Gui8787Js = {
     "app": {
       "content": {
         "set": function(c) {
-          app = document.getElementById(Gui8787JsConfig.app)
+          app = document.getElementById(Gui8787JsConfig.app);
+          if (app) {
+            content = c.split(';')
+          }
         }
       }
     }
