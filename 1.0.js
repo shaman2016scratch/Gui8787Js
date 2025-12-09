@@ -1,6 +1,8 @@
 Gui8787JsConfig = {
   "installed": false,
-  "app": 'root'
+  "app": 'root',
+  "vrApp": "",
+  "act": {}
 }
 Gui8787Js = {
   "config": {
@@ -40,15 +42,31 @@ Gui8787Js = {
                         }
                       } else if (i7 === 'html') {
                         html = `${html}${i8}`
+                      } else if (i7 === 'act-button') {
+                        html = `${html}<button onclick="Gui8787JsConfig.act[${i9.act}]" id="${i9.id}">${i8}</button>`
+                      } else if (i7 === 'act-div') {
+                        html = `${html}<div onclick="Gui8787JsConfig.act[${i9.act}]" id="${i9.id}">${i8}</div>`
                       }
                     }
                   }
                 }
               }
             }
+            Gui8787JsConfig.vrApp = html
           }
+        },
+        "update": function() {
+          app = document.getElementById(Gui8787JsConfig.app); app.innerHTML = Gui8787JsConfig.vrApp
+        },
+        "get": function() {
+          return html
         }
       }
+    }
+  },
+  "actions": {
+    "new": function(n, c) {
+      Gui8787JsConfig.act[n] = new Function(c)
     }
   }
 }
